@@ -244,6 +244,8 @@ GameObject:
   - component: {fileID: 186329944}
   - component: {fileID: 186329948}
   - component: {fileID: 186329947}
+  - component: {fileID: 186329950}
+  - component: {fileID: 186329949}
   m_Layer: 0
   m_Name: RehearsalManager
   m_TagString: Untagged
@@ -263,21 +265,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6e32b63c2735342aa51c63ebe0ad3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RehearsalManager
+  conductor: {fileID: 186329950}
+  noteSpawner: {fileID: 186329949}
   songTrack: {fileID: 11400000, guid: 542a54b21bda12a498d7125fb1b483e2, type: 2}
-  startDelaySeconds: 1
-  noteTrailSeconds: 1.2
-  notePrefab: {fileID: 3692280620800639093, guid: ab4e32e0233699f40a68e2adc445fbb0, type: 3}
-  lanes:
-  - xPosition: -3
-    key: 18
-  - xPosition: -1
-    key: 20
-  - xPosition: 1
-    key: 24
-  - xPosition: 3
-    key: 25
-  spawnHeight: 5
-  despawnHeight: -5
+  laneKeys: 12000000140000001800000019000000
+  perfectWindow: 0.6
+  goodWindow: 1
+  missWindow: 1
 --- !u!82 &186329945
 AudioSource:
   m_ObjectHideFlags: 0
@@ -290,7 +284,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -414,6 +408,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1426dd75563d97f438a3433c587bb255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RehearsalResultUI
+--- !u!114 &186329949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186329943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6382e839143623b48a660abd1b9bff9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Magma.Rhythm::Magma.Rhythm.NoteSpawner
+  notePrefab: {fileID: 3692280620800639093, guid: ab4e32e0233699f40a68e2adc445fbb0, type: 3}
+  lanes:
+  - xPosition: -3
+    key: 18
+  - xPosition: -1
+    key: 20
+  - xPosition: 1
+    key: 24
+  - xPosition: 3
+    key: 25
+  spawnHeight: 5
+  despawnHeight: -5
+  noteTrailSeconds: 1.2
+  poolPrewarm: 32
+--- !u!114 &186329950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186329943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 325f9efb34a086c41a8cb67d935e18ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Magma.Rhythm::Magma.Rhythm.Conductor
+  audioSource: {fileID: 186329945}
+  userOffsetMs: 0
+  scheduleAheadSeconds: 0.5
+  metronomeBpm: 120
 --- !u!1 &308888217
 GameObject:
   m_ObjectHideFlags: 0

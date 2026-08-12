@@ -161,7 +161,10 @@ namespace Magma.Gameplay.Rehearsal
             {
                 FallingNote note = hit.collider.GetComponentInParent<FallingNote>();
 
-                if (note != null)
+                // A click on a note still too far from its target time is ignored rather than
+                // scored as a Miss, mirroring the keyboard/touch lane guard. Only a note that
+                // is close enough (within the Good window) gets judged.
+                if (note != null && Mathf.Abs(songTime - note.TargetTime) <= goodWindow)
                 {
                     JudgeNote(note, songTime);
                 }
