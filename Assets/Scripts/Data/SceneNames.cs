@@ -29,5 +29,21 @@ namespace Magma.Data
 
         /// <summary>Scène d'exemple par défaut.</summary>
         public const string SampleScene = "SampleScene";
+
+        /// <summary>Résout le nom de scène du mini-jeu correspondant à l'identifiant donné.</summary>
+        public static string ForMiniGame(MiniGameId miniGameId)
+        {
+            switch (miniGameId)
+            {
+                case MiniGameId.Music:
+                    return PianoTitle;
+                case MiniGameId.Stage:
+                    return MiniGameStage;
+                case MiniGameId.Poster:
+                    return MiniGamePoster;
+                default:
+                    return null;
+            }
+        }
     }
 }
